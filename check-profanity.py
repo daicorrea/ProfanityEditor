@@ -1,14 +1,16 @@
-import urllib.request
+import urllib
 
 def read_text():
     quotes = open("movie_quotes.txt")
     contents_of_file = quotes.read()
-    print(contents_of_file)
     quotes.close()
+    check_profanity(contents_of_file)
 
-def check_profanity():
-    connection = urllib.request.urlopen("http://www.wdylike.appspot.com/?q=shit")
+def check_profanity(txt_to_check):
+    url = "http://www.wdylike.appspot.com/?q=" + (txt_to_check)
+    connection = urllib.urlopen(url)
     output = connection.read()
-    print("oi: " + str(output))
+    print(str(output))
 
-check_profanity()
+
+read_text()
